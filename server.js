@@ -27,7 +27,8 @@ app.post('/get-file-size', function (req, res) {
         }
 
         res.json({ 'size': req.file.size });
-    })
-})
+    });
+});
+
 app.listen(port);
 
