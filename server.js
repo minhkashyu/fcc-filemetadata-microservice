@@ -14,6 +14,10 @@ app.use(express.static(__dirname + '/views'));
 
 var port = process.env.PORT || 8080;
 
+app.get('/', function (req, res) {
+    res.render('/views/index.html');
+});
+
 app.post('/get-file-size', function (req, res) {
     upload(req, res, function (err) {
         if (err) {
