@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
 app.post('/get-file-size', function (req, res) {
     upload(req, res, function (err) {
         if (err) {
-            if (err.code == 'LIMIT_FILE_SIZE') {
+            if (err.code === 'LIMIT_FILE_SIZE') {
                 return res.send({
                     'error': 'The maximum file size limit for uploads is ' + fileSizeLimit,
                     'details': err
