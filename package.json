@@ -1,17 +1,20 @@
 {
-  "name": "file-metadata-api",
-  "version": "1.0.0",
-  "description": "File Metadata Microservice. Free Code Camp Project.",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "minhkashyu",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^2.0.0",
-    "express": "^4.14.0",
-    "multer": "^1.2.1"
-  }
+    "name": "file-metadata-api",
+    "version": "1.0.0",
+    "description": "File Metadata Microservice. Free Code Camp Project.",
+    "main": "server.js",
+    "engines": {
+        "node": "6.11.1"
+    },
+    "scripts": {
+        "start": "node server",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "minhkashyu",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^2.0.0",
+        "express": "^4.14.0",
+        "multer": "^1.2.1"
+    }
 }
