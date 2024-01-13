@@ -1,34 +1,83 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en-AU">
 <head>
-    <title>File Metadata Microservice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>File Metadata Microservice</title>
+
+  <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png"
+        type="image/x-icon"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+  <script href="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 </head>
-<body>
-<div class="container">
-    <h1 class="header">FreeCodeCamp API Basejump: File Metadata Microservice</h1>
-    <blockquote>
-        <p>User stories:</p>
-        <ul>
-            <li>I can submit a FormData object that includes a file upload.</li>
-            <li>When I submit something, I will receive the file size in bytes within the JSON response.</li>
-        </ul>
-    </blockquote>
 
-    <h3>Submit a file to view its filesize.</h3>
-    <form class="form-inline" action="/get-file-size" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <input type="file" class="form-control-file" name="mks-upload">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<body>
+<h1 class="text-center fw-bold mt-4 mb-4">
+  <span class="text-multi-color">File Metadata Microservice</span>
+</h1>
+
+<hr/>
+
+<div class="container text-center mt-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+      <form id="file-upload-form" enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+        <h2 class="mb-4">File Uploader</h2>
+
+        <input id="inputfield" class="form-control mb-4" type="file" name="upfile">
+
+        <div class="json-response alert alert-info text-break mb-2" style="display: none;"></div>
+
+        <input type="submit" class="btn btn-secondary w-100" value="Upload"/>
+      </form>
+    </div>
+  </div>
 </div>
-<script src="http://code.jquery.com/jquery.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<p class="text-center fw-bold mt-5 mb-0">
+  <span class="text-multi-color">Developed by </span>
+  Minh Ta
+</p>
+
+<script>
+  const ajaxUpload = (frm) => {
+    // disable submit button
+    frm.querySelector('input[type="submit"]').disabled = true;
+    // ajax
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', frm.action);
+    xhr.send(new FormData(frm));
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        // enable submit button
+        frm.querySelector('input[type="submit"]').disabled = false;
+        frm.querySelector('.json-response').innerHTML = xhr.responseText;
+        frm.querySelector('.json-response').style.display = 'block';
+      }
+    };
+  };
+
+  /**
+   * User Form
+   */
+  const uploadForm = document.getElementById('file-upload-form');
+
+  uploadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    ajaxUpload(uploadForm);
+
+    return false;
+  });
+</script>
 </body>
 </html>

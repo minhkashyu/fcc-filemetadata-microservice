@@ -1,25 +1,13 @@
-# File Metadata Microservice API
+# File Metadata Microservice
 
-File Metadata Microservice Api repository.
+The solution link is [https://mks-fcc-filemetadata-microservice.glitch.me](https://mks-fcc-filemetadata-microservice.glitch.me).
 
-You can run it at https://mks-file-metadata-api.herokuapp.com/
+## Test Cases
 
-## Requirements
+* You should provide your own project, not the example URL.
 
-* Expressjs:
+* You can submit a form that includes a file upload.
 
-  `npm install express --save`
+* The form file input field has the `name` attribute set to `upfile`.
 
-* dotenv:
-
-  `npm install dotenv --save`
-
-* multer:
-
-  `npm install multer --save`
-
-## User Stories
-
-* I can submit a FormData object that includes a file upload.
-
-* When I submit something, I will receive the file size in bytes within the JSON response.
+* When you submit a file, you receive the file `name`, `type`, and `size` in bytes within the JSON response.
